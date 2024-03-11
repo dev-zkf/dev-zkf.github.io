@@ -33,38 +33,45 @@ html {
     bottom: 50px;
     right: 0;
     background-color: #FFF;
-    color: #337AB7;
+    color: #5794ca;
     text-align: center;
     font-size: 30px;
     text-decoration: none;
 }
 #back2Top:hover {
-    background-color: #337AB7;
+    background-color: #4e9ce1;
     color: #FFF;
 }
+@font-face { font-family: Wolkswagen-Bold; src: url('/fonts/Volkswagen-Bold.otf'); } 
+@font-face { font-family: Minecraft; src: url('/fonts/MinecraftBold-nMK1.otf'); } 
 .welcome-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
-    background: #fff;
+    background: #f7ccff;
+    font-family: Minecraft;
 }
 .about-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
-    background: #EFDECD;
+    background: #fad3ff;
+    font-family:wolkswagen-bold;
 }
 .whatwedo-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
-    background: #fff;
+    background: #efb1fd;
+    font-family:wolkswagen-bold;
 }
 .contact-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
-    background: #EFDECD;
+    background: #dddeff;
+    font-size: large;
+    font-family: Wolkswagen-bold;
 }
 .navbar-default .navbar-nav > li > a:hover {
 	color: #333;
