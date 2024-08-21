@@ -1,17 +1,20 @@
-var r = document.querySelector(':root');
-function ChangeTheme() {    
-    var bgcolor;
-    var toggle = true;
-    if (toggle == true)
+var css = document.querySelector(':root');
+var ThemeBtn = document.getElementById("theme");
+let toggle = true
+function ChangeTheme() { 
+    
+    if (toggle === true)
     {
         toggle = false;
-        bgolor = "black";
+        ThemeBtn.innerHTML = "light mode";
+        let bgcolor = "black";
+        css.style.setProperty('--color', bgcolor);
     }
     else
     {
+        ThemeBtn.innerHTML = "dark mode";
         toggle = true;
-        bgcolor = "white";
+        let bgcolor = "white"; 
+        css.style.setProperty('--color', bgcolor);
     }
-
-    r.style.setProperty('--color', bgcolor);
 }
