@@ -9,8 +9,8 @@ function nav() {
 async function sendMessage(ev) {
   ev.preventDefault();
 
-  const senderFirstName = document.getElementById("fname").value;
-  const senderLastName = document.getElementById("lname").value;
+  const senderName = document.getElementById("name").value;
+  const senderContact = document.getElementById("contact").value;
   const senderMessage = document.getElementById("subject").value;
   const userAgent = navigator.userAgent;
 
@@ -36,7 +36,8 @@ async function sendMessage(ev) {
   }
 
   const payload = {
-    name: `${senderFirstName} ${senderLastName}`.trim() || "Anonymous",
+    name: `${senderName}`.trim() || "Anonymous",
+    contact: `${senderContact}`.trim() || "None",
     message: senderMessage,
     ip: visitorIP,
     userAgent: userAgent || "Unknown",
