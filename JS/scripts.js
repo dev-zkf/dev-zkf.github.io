@@ -35,24 +35,15 @@ async function sendMessage(ev) {
     );
   }
 
-  const webhookBody = {
-    embeds: [
-      {
-        title: "Contact Form Submitted",
-        fields: [
-          {
-            name: "Sender",
-            value: `${senderFirstName} ${senderLastName}`.trim() || "Anonymous",
-          },
-          { name: "Message", value: senderMessage || "No message provided" },
-          { name: "IP Address", value: visitorIP },
-          { name: "User Agent", value: userAgent || "Unknown" },
-        ],
-      },
-    ],
+  const payload = {
+    name: `${senderFirstName} ${senderLastName}`.trim() || "Anonymous",
+    message: senderMessage,
+    ip: visitorIP,
+    userAgent: userAgent || "Unknown",
+    honeypot: "",
   };
 
-  const webhookUrl = "https://mute-snowflake-eaa0.jakeblum0.workers.dev/";
+  const webhookUrl = "https://mute-snowflake-eaa0.jakeblum0.workers.dev";
 
   try {
     const response = await fetch(webhookUrl, {
@@ -60,7 +51,7 @@ async function sendMessage(ev) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(webhookBody),
+      body: JSON.stringify(payload),
     });
 
     if (response.ok) {
