@@ -62,21 +62,7 @@ async function sendMessage(ev) {
       ev.target.reset();
     } else {
       const errText = (await response.text()).trim();
-
-      if (response.status === 429) {
-        alert(
-          errText ||
-            "You have sent too many messages. Please wait and try again.",
-        );
-      } else if (response.status === 400) {
-        alert(
-          errText && errText !== "Bad Request"
-            ? errText
-            : "Your message was rejected. Check message length, links, or repeated characters.",
-        );
-      } else {
-        alert(errText || `Could not send message (Error ${response.status}).`);
-      }
+      alert(errText || `Could not send message (Error ${response.status}).`);
     }
   } catch (err) {
     alert("Network error while sending message.");
