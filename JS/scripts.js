@@ -33,10 +33,7 @@ async function sendMessage(ev) {
       visitorIP = ipData.ip;
     }
   } catch (error) {
-    console.warn(
-      "IP fetch blocked or failed locally (this is normal for local testing):",
-      error,
-    );
+    // IP lookup failed or timed out; keep default value
   }
 
   const payload = {
@@ -65,7 +62,6 @@ async function sendMessage(ev) {
       ev.target.reset();
     } else {
       const errText = (await response.text()).trim();
-      console.error("Form rejected by worker:", response.status, errText);
 
       if (response.status === 429) {
         alert(
@@ -76,14 +72,13 @@ async function sendMessage(ev) {
         alert(
           errText && errText !== "Bad Request"
             ? errText
-            : "Your message was flagged or invalid. Check length, links, or repeated characters.",
+            : "Your message was rejected. Check message length, links, or repeated characters.",
         );
       } else {
         alert(errText || `Could not send message (Error ${response.status}).`);
       }
     }
   } catch (err) {
-    console.error("Network error posting to worker:", err);
     alert("Network error while sending message.");
   }
 }
